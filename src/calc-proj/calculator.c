@@ -8,14 +8,22 @@ void calc()
     int ModeSelect;
     int inputA;
     int inputB;
-    static int modearray[4];
+    static int modearray[3];
 
-    printf("Select mode:  '\n' 1 '\n' 2'\n' 3'\n' 4");
+    printf("Select mode:  '\n' 1 '\n' 2'\n' 3'");
     scanf(ModeSelect);
 
     //MODE SELECTION
-    if (modearray[4] == 4){
+    if (modearray[3] == 3){
         int result = inputA + inputB;
+        return result;
+    }
+        if (modearray[3] == 2){
+        int result = inputA - inputB;
+        return result;
+    }
+        if (modearray[3] == 1){
+        int result = inputA * inputB;
         return result;
     }
 }
