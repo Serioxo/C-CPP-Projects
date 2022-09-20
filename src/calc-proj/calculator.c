@@ -17,25 +17,31 @@ void calc()
 
     scanf("%d %d", &inputA, &inputB);
 
-    //MODE SELECTION
-    if (checker == 3){
+
+
+    switch (checker)
+    {
+    case 1:
         result = inputA + inputB;
         printf("The Result is: " + result);
-        
-    }
-        if (checker == 2){
+        break;
+    
+
+    case 2:
         int result = inputA - inputB;
         printf("The Result is: " + result);
-    }
-        if (checker == 1){
+        break;
+
+    case 3:
         int result = inputA * inputB;
-        printf("The Result is: " + result);       
+        printf("The Result is: " + result); 
+        break;
+
+    default:
+        __THROW(printf("Error: Wrong input given try again"));
+        break;
     }
 
-    else if (checker != 1,2,3)
-    {
-        __THROW(printf("Error: Wrong input given try again"));
-    }
 }
 
 int main(){
