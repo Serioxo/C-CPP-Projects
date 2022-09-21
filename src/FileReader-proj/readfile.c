@@ -4,20 +4,25 @@
 
 int main(int argc, char **argv)
 {
+   char ch, file_name[150];
+   FILE *fp;
 
-    FILE *FL;
+   printf("Enter name of a file you wish to see\n");
+   gets(file_name);
 
-    char *buffer = malloc(100 * sizeof(char) + 1);
-    char ret = '\0';
-    FL = fopen("testreadfile.txt", "r");
+   fp = fopen(file_name, "r"); // read mode
 
-    do
-    {
-        ret = fscanf(FL, "%s", buffer);
-        printf("%s\n", buffer);
+   if (fp == NULL)
+   {
+      perror("Error while opening the file.\n");
+      exit(EXIT_FAILURE);
+   }
 
-    } while (ret != EOF);
+   printf("The contents of %s file are:\n", file_name);
 
-    free(buffer);
-    return 0;
+   while((ch = fgetc(fp)) != EOF)
+      printf("%c", ch);
+
+   fclose(fp);
+   return 0;
 }
