@@ -48,17 +48,9 @@ void calc()
         break;
     }
 
-    printf("the result is: ", result);
-
-    return 0;
+    printf("the result is: %d", result);
 
 }
-
-    return a + b;
-}
-
-
-
 
 
 int main(){
