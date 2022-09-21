@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char ** argv){
+int main(int argc, char **argv)
+{
 
-    FILE* FL;
+    FILE *FL;
 
-    char * buffer = malloc(100 * sizeof(char)+1);
+    char *buffer = malloc(100 * sizeof(char) + 1);
     char ret = '\0';
     FL = fopen("testreadfile.txt", "r");
 
