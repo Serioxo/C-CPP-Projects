@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h> 
 
 // Define Birthday of customer
 struct birthdate
@@ -21,22 +22,22 @@ struct customer
     char address_street[100];
     char city[100];
     struct birthdate birthday;
+    bool isActive;
 
 } customer;
   int tl,sl,ts;
-void kill()
-{
-    exi(_Exit);
-}
 
-// Adds client to system
-void addClient()
-{
+void writefile(){
     FILE *fp;
     fp = fopen("/Client-Data/client.dat", "ab");
     fwrite(&customer, sizeof(customer), 1, fp);
     fclose(fp);
     return;
+}
+// Adds client to system
+void addClient()
+{
+
 }
 // Removes client from system
 void removeClient()
@@ -46,10 +47,7 @@ void removeClient()
 void editClient()
 {
 }
-// View client info
-void viewClient()
-{
-}
+
 // Get data about client
 int getData()
 {
@@ -62,8 +60,6 @@ int getData()
 	  fread(&customer,sizeof(customer),1,fp);
 	  printf("\ncustomer ID:%d\n",++customer.id);
 	  fclose(fp);
-	  printf("         Account number:");
-	  scanf("%d",&customer.name);
 	  printf("\n       Name:");
 	  scanf("%s",customer.name);
 	  printf("\n       mobile no:");
@@ -79,10 +75,27 @@ int getData()
 // Call viewClient via ID
 void checkClientID(int ID)
 {
+
 }
+
+
+   void output()
+	 {
+	   printf("\n\n    Customer no    :%d\n",customer.id);
+	   printf("    Name 	   :%s\n",customer.name);
+	   printf("    Mobile no      :%.f\n",customer.mobilenum);
+	   printf("    Account number :%d\n",customer.address_street);
+	   printf("    City           :%s\n",customer.city);
+	   printf("    Payment date   :%d/%d/%d\n\n",customer.birthday.month,customer.birthday.day,customer.birthday.year);
+	   printf("    Account Status :%s\n",customer.isActive);
+     }
+
+
 
 int main()
 {
+    int i,n;
+	char ch;
     printf("\t\t\t***********************************\n");
     printf("\t\t\t** WELCOME TO INFORMATION HANDLER **\n");
     printf("\t\t\t***********************************\n");
@@ -96,4 +109,36 @@ int main()
     printf("\t\t\t\tESC- TO EXIT.\n\n\n");
     printf("\t\t\t***********************************\n\n\n");
     return 0;
+    do{
+	       printf("\nselect what do you want to do?");
+	       ch=getche();
+	  }while(ch<='0' || ch>'3');
+	  switch(ch){
+		case '1':
+			clrscr();
+			printf("\nhow many customer accounts?");
+			scanf("%d",&n);
+			for(i=0;i<n;i++){
+				input();
+				writefile();
+			}
+			main();
+		case '2':
+			clrscr();
+			printf("search by what?\n");
+			printf("\n1 --- search by customer number\n");
+			printf("2 --- search by customer name\n");
+			search();
+			ch=getche();
+			main();
+		case '3':
+			clrscr();
+			delay(700);
+			gotoxy(25,25);
+			cprintf("\nA PROJECT BY BIDUR & SUJAN");
+			delay(1500);
+			exit(1);
+	  }
 }
+
+
