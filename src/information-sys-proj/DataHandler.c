@@ -30,7 +30,7 @@ int tellreturn, fsize, tellsize;
 void writefile()
 {
 	FILE *fp;
-	fp = fopen("/Client-Data/client.dat", "ab");
+	fp = fopen("/workspaces/C-CPP-Projects/src/information-sys-proj/Client-Data/client.dat", "ab");
 	fwrite(&customer, sizeof(customer), 1, fp);
 	fclose(fp);
 	return;
@@ -51,7 +51,8 @@ void editClient()
 // Get data about client
 int getData()
 {
-	FILE *fp = fopen("/Client-Data/client.dat", "r");
+	// DIRECTORY MUST BE CHANGED DEPENDING ON WHERE "CLIENT.DAT" FILE IS STORED
+	FILE *fp = fopen("/workspaces/C-CPP-Projects/src/information-sys-proj/Client-Data/client.dat", "r");
 	fseek(fp, 0, SEEK_CUR);
 	tellreturn = ftell(fp);
 	fsize = sizeof(customer);
@@ -76,14 +77,15 @@ int getData()
 // Call viewClient via ID
 void checkClientID(int ID)
 {
+
 }
 
 void output()
 {
 	printf("\n\nCustomer ID    :%d\n", customer.id);
-	printf("    Name 	      :%s\n", customer.name);
+	printf("    Name 	       :%s\n", customer.name);
 	printf("    Mobile no      :%.d\n", customer.mobilenum);
-	printf("    Address 		  :%s\n", customer.address_street);
+	printf("    Address 	   :%s\n", customer.address_street);
 	printf("    City           :%s\n", customer.city);
 	printf("    Birth date     :%d/%d/%d\n\n", customer.birthday.month, customer.birthday.day, customer.birthday.year);
 }
