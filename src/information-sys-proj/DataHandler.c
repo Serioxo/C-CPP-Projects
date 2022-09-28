@@ -29,7 +29,8 @@ int tellreturn, fsize, tellsize;
 
 void writefile()
 {
-	FILE *fp;
+
+	FILE *fp = NULL;
 	fp = fopen("/workspaces/C-CPP-Projects/src/information-sys-proj/Client-Data/client.dat", "ab");
 	fwrite(&customer, sizeof(customer), 1, fp);
 	fclose(fp);
@@ -57,11 +58,13 @@ int getData()
 	tellreturn = ftell(fp);
 	fsize = sizeof(customer);
 	tellsize = tellreturn / fsize;
-
+	char currentID = customer.id;
 	fseek(fp, (tellsize - 1) * fsize, SEEK_SET);
 	fread(&customer, sizeof(customer), 1, fp);
-	printf("\ncustomer ID:%d\n", ++customer.id);
+	printf("Last Customer ID: %d\n", customer.id);
 	fclose(fp);
+	printf("\nNew Customer ID: ");
+	scanf("%s/%c", currentID);
 	printf("\n       Name:");
 	scanf("%s", customer.name);
 	printf("\n       mobile no:");
@@ -77,7 +80,7 @@ int getData()
 // Call viewClient via ID
 void checkClientID(int ID)
 {
-
+	output();
 }
 
 void output()
@@ -127,12 +130,17 @@ int main()
 	case '2':
 		system("clear");
 		printf("search by what?\n");
-		printf("\n1 --- search by customer number\n");
-		printf("2 --- search by customer name\n");
+		printf("\n1 --- Output Customer information via ID\n");
 		output();
 		ch = getchar();
 		main();
 	case '3':
+		system("clear");
+		printf("Please Type customer ID: ");
+		int id = scanf("%s");
+		checkClientID(id);
+		main();
+	case '4':
 		system("clear");
 		printf("\n\n\n\n\nProject by jakub migac");
 		exit(1);
