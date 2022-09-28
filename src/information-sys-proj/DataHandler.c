@@ -63,14 +63,14 @@ int getData()
 	  printf("\n       Name:");
 	  scanf("%s",customer.name);
 	  printf("\n       mobile no:");
-	  scanf("%f",&customer.mobilenum);
+	  scanf("%i",&customer.mobilenum);
 	  printf("         Street:");
 	  scanf("%s",customer.address_street);
 	  printf("         City:");
 	  scanf("%s",customer.city);
 	  printf("         Brithday (mm/dd/yyyy):");
 	  scanf("%d/%d/%d",&customer.birthday.month,&customer.birthday.day,&customer.birthday.year);
-	  return;
+	  return 0;
 }
 // Call viewClient via ID
 void checkClientID(int ID)
@@ -81,15 +81,14 @@ void checkClientID(int ID)
 
    void output()
 	 {
-	   printf("\n\n    Customer no    :%d\n",customer.id);
-	   printf("    Name 	   :%s\n",customer.name);
-	   printf("    Mobile no      :%.f\n",customer.mobilenum);
-	   printf("    Account number :%d\n",customer.address_street);
+	   printf("\n\nCustomer no    :%d\n",customer.id);
+	   printf("    Name 	      :%s\n",customer.name);
+	   printf("    Mobile no      :%.d\n",customer.mobilenum);
+	   printf("    Address 		  :%s\n",customer.address_street);
 	   printf("    City           :%s\n",customer.city);
 	   printf("    Payment date   :%d/%d/%d\n\n",customer.birthday.month,customer.birthday.day,customer.birthday.year);
 	   printf("    Account Status :%s\n",customer.isActive);
      }
-
 
 
 int main()
@@ -108,14 +107,14 @@ int main()
     printf("\t\t\t\t4-SEARCH CLIENT VIA ID\n");
     printf("\t\t\t\tESC- TO EXIT.\n\n\n");
     printf("\t\t\t***********************************\n\n\n");
-    return 0;
+
     do{
 	       printf("\nselect what do you want to do?");
-	       ch=getche();
+	       ch=getchar();
 	  }while(ch<='0' || ch>'3');
 	  switch(ch){
 		case '1':
-			clrscr();
+			system("clear");
 			printf("\nhow many customer accounts?");
 			scanf("%d",&n);
 			for(i=0;i<n;i++){
@@ -124,7 +123,7 @@ int main()
 			}
 			main();
 		case '2':
-			clrscr();
+			system("clear");
 			printf("search by what?\n");
 			printf("\n1 --- search by customer number\n");
 			printf("2 --- search by customer name\n");
@@ -132,10 +131,10 @@ int main()
 			ch=getche();
 			main();
 		case '3':
-			clrscr();
+			system("clear");
 			delay(700);
 			gotoxy(25,25);
-			cprintf("\nA PROJECT BY BIDUR & SUJAN");
+			dprintf("\nProject by jakub migac");
 			delay(1500);
 			exit(1);
 	  }
