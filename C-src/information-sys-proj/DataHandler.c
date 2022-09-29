@@ -31,7 +31,7 @@ void writefile()
 {
 
 	FILE *fp = NULL;
-	fp = fopen("/workspaces/C-CPP-Projects/src/information-sys-proj/Client-Data/client.dat", "ab");
+	fp = fopen("/workspaces/C-CPP-Projects/C-src/information-sys-proj/Client-Data/client.dat", "ab");
 	fwrite(&customer, sizeof(customer), 1, fp);
 	fclose(fp);
 	return;
@@ -53,7 +53,7 @@ void editClient()
 int getData()
 {
 	// DIRECTORY MUST BE CHANGED DEPENDING ON WHERE "CLIENT.DAT" FILE IS STORED
-	FILE *fp = fopen("/workspaces/C-CPP-Projects/src/information-sys-proj/Client-Data/client.dat", "r");
+	FILE *fp = fopen("/workspaces/C-CPP-Projects/C-src/information-sys-proj/Client-Data/client.dat", "r");
 	fseek(fp, 0, SEEK_CUR);
 	tellreturn = ftell(fp);
 	fsize = sizeof(customer);
@@ -104,7 +104,7 @@ int main()
 	printf("\t\t\t***********************************\n");
 	printf("\t\t\t\t\tMENU\n\n\n");
 	printf("\t\t\t\t1-ADD CLIENT\n");
-	printf("\t\t\t\t2-REMOVE CLIENT\n");
+	printf("\t\t\t\t2-VIEW LATEST CLIENT\n");
 	printf("\t\t\t\t3-EDIT CLIENT\n");
 	printf("\t\t\t\t4-SEARCH CLIENT VIA ID\n");
 	printf("\t\t\t\tESC- TO EXIT.\n\n\n");
@@ -129,7 +129,7 @@ int main()
 		main();
 	case '2':
 		system("clear");
-		printf("search by what?\n");
+		printf("\n");
 		printf("\n1 --- Output Customer information via ID\n");
 		output();
 		ch = getchar();
